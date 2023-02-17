@@ -22,6 +22,7 @@ contract Delegation {
         owner = msg.sender;
     }
 
+    // fallback runs if you try to execute a function that doesn't exist on the Delegation contract
     fallback() external {
         (bool result, ) = address(delegate).delegatecall(msg.data);
         if (result == true) {
