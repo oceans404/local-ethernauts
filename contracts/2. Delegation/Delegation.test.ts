@@ -18,8 +18,6 @@ describe("Attacking Delegation", function () {
     victim = await Victim.connect(deployer).deploy(delegateContract.address);
     const Attacker = await ethers.getContractFactory("AttackingDelegation");
     attacker = await Attacker.deploy(victim.address);
-
-    attacker.connect(hacker).hackContract();
   });
 
   // Get this to pass!
