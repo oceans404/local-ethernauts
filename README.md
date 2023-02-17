@@ -8,6 +8,15 @@ This challenge is based on https://ethernaut.openzeppelin.com/
 2. Compile all contracts by running `npx hardhat compile`
 3. Run a local node by running `npx hardhat node`
 
+# Steph's setup
+
+Create a .env file and copy .env.sample variables in.
+- PRIVATE_KEY -- [export from Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key#:~:text=On%20the%20account%20page%2C%20click,click%20%E2%80%9CConfirm%E2%80%9D%20to%20proceed.)
+- INFURA_ID -- [Create key](https://app.infura.io/)
+- ETHERSCAN_KEY -- [Create key](https://etherscan.io/myapikey)
+
+Check README instructions in each contracts/ challenge folder
+
 # How to solve each level
 
 - If you look inside the `contracts/` directory you'll find 8 levels for you to solve!

@@ -12,6 +12,8 @@ contract CoinFlip {
     }
 
     function flip(bool _guess) public returns (bool) {
+
+        // blockhash https://systemweakness.com/capture-the-ether-predict-the-block-hash-bdbaf870cd5d
         uint256 blockValue = uint256(blockhash(block.number - 1));
 
         if (lastHash == blockValue) {

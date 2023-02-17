@@ -1,8 +1,12 @@
-import { expect } from "chai";
 import { ethers } from "hardhat";
 
 const helper = async (victim: any, attacker: any) => {
-  // add code here that will help you pass the test
+  const [addr] = await ethers.getSigners();
+
+  const attackCount = 10;
+  for (let i = 0; i < attackCount; i++) {
+    await attacker.connect(addr).hackContract();
+  }
 };
 
 export default helper;
