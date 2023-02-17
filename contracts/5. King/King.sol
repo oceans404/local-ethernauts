@@ -14,6 +14,7 @@ contract King {
     }
 
     receive() external payable {
+        // if the new sent amount is bigger than the current king's value, send the current king the value and set the msg.sender as the new king
         require(msg.value >= prize || msg.sender == owner);
         king.transfer(msg.value);
         king = payable(msg.sender);

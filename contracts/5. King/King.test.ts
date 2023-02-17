@@ -33,6 +33,12 @@ describe("Attacking King", function () {
       console.log("error: ", error);
     }
     const king = await victim._king();
+    console.log("king ", king); // king in King contract
+    console.log("victim ", victim.address);
+    console.log("hacker ", hacker.address);
+    console.log("attacker ", attacker.address); // attacker contract
+    console.log("deployer ", deployer.address);
     expect(king).to.not.equal(kingPlayer.address);
+    expect(attacker.address).to.equal(king);
   });
 });

