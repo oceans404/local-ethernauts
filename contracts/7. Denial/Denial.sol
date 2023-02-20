@@ -13,6 +13,7 @@ contract Denial {
         owner = payable(msg.sender);
     }
 
+    // anyone can set themselves as the withdrawal partner (recipient)
     function setWithdrawPartner(address _partner) public {
         partner = _partner;
     }
